@@ -1,7 +1,3 @@
-class LegoTrainException(Exception):
-    pass
-
-
 class LegoTrainControllerException(Exception):
     """
     The common exception for this package
@@ -9,9 +5,13 @@ class LegoTrainControllerException(Exception):
     pass
 
 
-class LircNotInstalledError(LegoTrainControllerException):
-    pass
+class InvalidLircError(LegoTrainControllerException):
+    message = 'There is something wrong with your LIRC installation.'
 
 
-class UnknownCommandError(LegoTrainControllerException):
-    pass
+class InvalidCommandError(LegoTrainControllerException):
+    message = 'You are trying to execute an invalid Lego command.'
+
+
+class InvalidInputError(LegoTrainControllerException):
+    message = 'Invalid or incomplete input provided.'

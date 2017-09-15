@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 from flask import jsonify
 from . import core, config
-from .exceptions import LegoTrainException
+from .exceptions import LegoTrainControllerException
 app = Flask(__name__)
 
 
@@ -28,7 +28,7 @@ def cmd():
             'cmd': cmd
         }
         status_code = 200
-    except LegoTrainException as e:
+    except LegoTrainControllerException as e:
         data = {
             'error': str(e)
         }

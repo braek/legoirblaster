@@ -5,9 +5,13 @@
 .speed {
     width: 300px;
 }
+table {
+    margin: 10px
+}
 table, th, td {
     border-collapse: collapse;
     border: 1px solid #ccc;
+    cursor: default;
 }
 th, td {
     padding: 15px;

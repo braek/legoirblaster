@@ -1,23 +1,26 @@
 import subprocess
 from . import config
-from .exceptions import LegoTrainException
+from . import exceptions
 
 
 def send_lego_train_command(cmd):
     try:
         subprocess.call(['irsend', 'SEND_ONCE', config.MODE, cmd])
     except FileNotFoundError:
-        # raise LegoTrainException("irsend is not installed!")
+        # raise exceptions.InvalidLircError()
         pass
     except Exception as e:
-        raise LegoTrainException(str(e))
+        raise exceptions.LegoTrainControllerException(str(e))
 
 
 def get_lego_train_command(channel, output, speed, brake):
-    channel = int(channel)
-    output = str(output)
-    speed = int(speed)
-    brake = int(brake)
+    try:
+        channel = int(channel)
+        output = str(output)
+        speed = int(speed)
+        brake = int(brake)
+    except (TypeError, ValueError):
+        raise exceptions.InvalidInputError()
     if channel in range(1, config.CHANNELS + 1) and output in config.OUTPUTS:
         if brake:
             cmd = 'BRAKE'
@@ -27,4 +30,4 @@ def get_lego_train_command(channel, output, speed, brake):
             cmd = 'M{}'.format(abs(speed))
         if cmd:
             return '{}{}_{}'.format(channel, output, cmd)
-        raise LegoTrainException('This command is invalid!')
+        raise exceptions.InvalidCommandError()
