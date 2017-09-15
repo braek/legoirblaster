@@ -1,0 +1,21 @@
+* {
+    font-family: Georgia;
+    font-size: 1em;
+}
+.speed {
+    width: 300px;
+}
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+td.r {
+    background-color: #fdd;
+}
+td.b {
+    background-color: #ddf;
+}
