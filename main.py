@@ -1,2 +1,2 @@
-from legotraincontroller import app
+from legotraincontroller.app import app
 app.run(debug=True)
