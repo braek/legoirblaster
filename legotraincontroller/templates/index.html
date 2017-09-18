@@ -48,33 +48,33 @@ $(function(){
 </script>
 </head>
 <body>
-<form action="/" method="get" onsubmit="return false">
-    <table>
-        <tr>
-            <th scope="col" class="channel">Channel</th>
-            <th scope="col" class="train">Train</th>
-            <th scope="col" class="output">Output</th>
-            <th scope="col" class="speed">Speed</th>
-            <th scope="col" class="brake">Brake</th>
-        </tr>
-        {% for channel in channels %}{% for output in outputs %}
-        <tr>
-            {% if loop.index == 1 %}
-            <td rowspan="{{ outputs|length }}">{{ channel }}</td>
-            {% endif %}
-            <td>{{ channel * outputs|length - outputs|length + loop.index}}</td>
-            <td class="{{ output|lower }}">{{ output }}</td>
-            <td><div id="speed{{ channel * outputs|length - outputs|length + loop.index}}"></div></td>
-            <td><button class="ui-button ui-widget ui-corner-all" type="button" id="brake{{ channel * outputs|length - outputs|length + loop.index}}">&times;</button></td>
-        </tr>
-        {% endfor %}{% endfor %}
-        <tr>
-            <td colspan="5"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
-        </tr>
-        <tr>
-            <td colspan="5"><strong id="cmd">&nbsp;</strong></td>
-        </tr>
-    </table>
-</form>
+<div id="page">
+    <form action="/" method="get" onsubmit="return false">
+        <table>
+            <tr>
+                <th scope="col" class="channel">Channel</th>
+                <th scope="col" class="output">Output</th>
+                <th scope="col" class="speed">Speed</th>
+                <th scope="col" class="brake">Brake</th>
+            </tr>
+            {% for channel in channels %}{% for output in outputs %}
+            <tr>
+                {% if loop.index == 1 %}
+                <td rowspan="{{ outputs|length }}">{{ channel }}</td>
+                {% endif %}
+                <td class="{{ output|lower }}">{{ output }}</td>
+                <td><div id="speed{{ channel * outputs|length - outputs|length + loop.index}}"></div></td>
+                <td><button class="ui-button ui-widget ui-corner-all" type="button" id="brake{{ channel * outputs|length - outputs|length + loop.index}}">&times;</button></td>
+            </tr>
+            {% endfor %}{% endfor %}
+            <tr>
+                <td colspan="5"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
+            </tr>
+            <tr>
+                <td colspan="5"><strong id="cmd">&nbsp;</strong></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

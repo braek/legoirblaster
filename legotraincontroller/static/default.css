@@ -1,16 +1,30 @@
 * {
-    font-family: Georgia;
+    font-family: Verdana;
     font-size: 1em;
+    color: #454545;
+}
+#page {
+    margin: 0 auto 0 auto;
+    max-width: 1000px;
+}
+.channel {
+    width: 15%;
+}
+.output {
+    width: 15%;
 }
 .speed {
-    width: 300px;
+    width: 55%;
+}
+.brake {
+    width: 15%;
 }
 table {
-    margin: 10px
+    width: 100%;
 }
 table, th, td {
     border-collapse: collapse;
-    border: 1px solid #ccc;
+    border: 1px solid #c5c5c5;
     cursor: default;
 }
 th, td {
@@ -18,8 +32,8 @@ th, td {
     text-align: center;
 }
 td.r {
-    background-color: #fdd;
+    background-color: #C4281B;
 }
 td.b {
-    background-color: #ddf;
+    background-color: #0D69AB;
 }
