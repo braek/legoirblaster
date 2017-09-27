@@ -16,3 +16,8 @@ https://www.youtube.com/watch?v=HI0b8D8LjN8
 * Write unit tests
 * Write documentation on how to get this running on Raspberry Pi
 * Write documentation on the used hardware (IR led, transistor, etc.)
+
+## References
+
+* http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/
+* https://github.com/iConor/lego-lirc
