@@ -1,16 +1,15 @@
 from flask import Flask, render_template, Response, request
 from flask import jsonify
-from . import core, config
+from . import core, constants
 from .exceptions import LegoTrainControllerException
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
 def index():
-    channels = list(range(1, config.CHANNELS + 1))
-    trains = list(range(1, config.CHANNELS * len(config.OUTPUTS) + 1))
-    response = Response(render_template('index.html', channels=channels, outputs=config.OUTPUTS, trains=trains,
-                                        title=config.TITLE))
+    channels = list(range(1, constants.CHANNELS + 1))
+    trains = list(range(1, constants.CHANNELS * len(constants.OUTPUTS) + 1))
+    response = Response(render_template('index.html', channels=channels, outputs=constants.OUTPUTS, trains=trains))
     response.headers['Content-Type'] = 'text/html; charset=UTF-8'
     return response
 
@@ -22,8 +21,8 @@ def cmd():
     speed = request.form.get('speed')
     brake = request.form.get('brake')
     try:
-        cmd = core.get_lego_train_command(channel, output, speed, brake)
-        core.send_lego_train_command(cmd)
+        cmd = core.create_command(channel, output, speed, brake)
+        core.send_command(cmd)
         data = {
             'cmd': cmd
         }
