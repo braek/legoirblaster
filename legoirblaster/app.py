@@ -16,10 +16,10 @@ def index():
 
 @app.route('/cmd', methods=['POST'])
 def cmd():
-    channel = request.form.get('channel')
+    channel = int(request.form.get('channel'))
     output = request.form.get('output')
-    speed = request.form.get('speed')
-    brake = request.form.get('brake')
+    speed = int(request.form.get('speed'))
+    brake = bool(int(request.form.get('brake')))
     try:
         cmd = core.create_command(channel, output, speed, brake)
         core.send_command(cmd)

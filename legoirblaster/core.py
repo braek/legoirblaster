@@ -14,10 +14,7 @@ def send_command(cmd):
     try:
         subprocess.call(['irsend', 'SEND_ONCE', constants.RC_MODE, cmd])
     except FileNotFoundError:
-        # raise exceptions.InvalidLircError()
-        pass
-    except Exception as e:
-        raise exceptions.LegoIRBlasterException(str(e))
+        raise exceptions.LircError
 
 
 def create_command(channel, output, speed, brake):
@@ -31,13 +28,7 @@ def create_command(channel, output, speed, brake):
     :param brake: boolean indicating that the brake was hit
     :return: string representing the raw IR command
     """
-    try:
-        channel = int(channel)
-        output = str(output)
-        speed = int(speed)
-        brake = int(brake)
-    except (TypeError, ValueError):
-        raise exceptions.InvalidInputError()
+    print('brake={}'.format(brake))
     if channel in range(1, constants.CHANNELS + 1) and output in constants.OUTPUTS:
         if brake:
             cmd = 'BRAKE'
@@ -47,4 +38,4 @@ def create_command(channel, output, speed, brake):
             cmd = 'M{}'.format(abs(speed))
         if cmd:
             return '{}{}_{}'.format(channel, output, cmd)
-    raise exceptions.InvalidCommandError()
+    raise exceptions.CommandError
