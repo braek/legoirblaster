@@ -1,8 +1,8 @@
-# Lego Train Controller
+# Lego IR Blaster
 
 ## Description
 
-You can control Lego Power Functions trains with this Flask application if you install it on a Raspberry Pi.
+You can control LEGO® Power Functions with this Flask application if you install it on a Raspberry Pi.
 
 Check the video below to see it in action!
 

@@ -1,2 +1,2 @@
-from legotraincontroller.app import app
+from legoirblaster.app import app
 app.run(debug=True)

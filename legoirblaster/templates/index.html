@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ title }}</title>
+<title>Lego IR Blaster</title>
 <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" rel="stylesheet">
 <link href="{{ url_for('static', filename='default.css') }}" type="text/css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
@@ -39,8 +39,8 @@ $(function(){
     });
     {% endfor %}{% endfor %}
     $('#reset').click(function(){
-        {% for train in trains %}
-        $('#brake{{ train }}').click();
+        {% for device in devices %}
+        $('#brake{{ device }}').click();
         {% endfor %}
     });
     $('#reset').click();

@@ -1,17 +1,17 @@
-class LegoTrainControllerException(Exception):
+class LegoIRBlasterException(Exception):
     """
     The common exception for this package
     """
     pass
 
 
-class InvalidLircError(LegoTrainControllerException):
+class InvalidLircError(LegoIRBlasterException):
     message = 'There is something wrong with your LIRC installation.'
 
 
-class InvalidCommandError(LegoTrainControllerException):
+class InvalidCommandError(LegoIRBlasterException):
     message = 'You are trying to execute an invalid Lego command.'
 
 
-class InvalidInputError(LegoTrainControllerException):
+class InvalidInputError(LegoIRBlasterException):
     message = 'Invalid or incomplete input provided.'

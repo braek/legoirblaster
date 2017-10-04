@@ -17,7 +17,7 @@ def send_command(cmd):
         # raise exceptions.InvalidLircError()
         pass
     except Exception as e:
-        raise exceptions.LegoTrainControllerException(str(e))
+        raise exceptions.LegoIRBlasterException(str(e))
 
 
 def create_command(channel, output, speed, brake):

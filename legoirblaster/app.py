@@ -1,15 +1,15 @@
 from flask import Flask, render_template, Response, request
 from flask import jsonify
 from . import core, constants
-from .exceptions import LegoTrainControllerException
+from .exceptions import LegoIRBlasterException
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
 def index():
     channels = list(range(1, constants.CHANNELS + 1))
-    trains = list(range(1, constants.CHANNELS * len(constants.OUTPUTS) + 1))
-    response = Response(render_template('index.html', channels=channels, outputs=constants.OUTPUTS, trains=trains))
+    devices = list(range(1, constants.CHANNELS * len(constants.OUTPUTS) + 1))
+    response = Response(render_template('index.html', channels=channels, outputs=constants.OUTPUTS, devices=devices))
     response.headers['Content-Type'] = 'text/html; charset=UTF-8'
     return response
 
@@ -27,7 +27,7 @@ def cmd():
             'cmd': cmd
         }
         status_code = 200
-    except LegoTrainControllerException as e:
+    except LegoIRBlasterException as e:
         data = {
             'error': str(e)
         }
