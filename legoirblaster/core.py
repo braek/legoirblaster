@@ -28,8 +28,8 @@ def create_command(channel, output, speed, brake):
     :param brake: boolean indicating that the brake was hit
     :return: string representing the raw IR command
     """
-    print('brake={}'.format(brake))
     if channel in range(1, constants.CHANNELS + 1) and output in constants.OUTPUTS:
+        cmd = None
         if brake:
             cmd = 'BRAKE'
         elif speed in range(0, constants.MAX_SPEED + 1):

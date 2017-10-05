@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 from flask import jsonify
 from . import core, constants
-from .exceptions import LegoIRBlasterException
+from . import exceptions
 app = Flask(__name__)
 
 
@@ -16,10 +16,10 @@ def index():
 
 @app.route('/cmd', methods=['POST'])
 def cmd():
-    channel = int(request.form.get('channel'))
-    output = request.form.get('output')
-    speed = int(request.form.get('speed'))
-    brake = bool(int(request.form.get('brake')))
+    channel = int(request.form.get('channel', 0))
+    output = request.form.get('output', 'R').upper()
+    speed = int(request.form.get('speed', -8))
+    brake = bool(int(request.form.get('brake', 0)))
     try:
         cmd = core.create_command(channel, output, speed, brake)
         core.send_command(cmd)
@@ -27,11 +27,14 @@ def cmd():
             'cmd': cmd
         }
         status_code = 200
-    except LegoIRBlasterException as e:
+    except exceptions.LegoIRBlasterException as e:
         data = {
             'error': str(e)
         }
-        status_code = 400
+        if isinstance(e, exceptions.LircError):
+            status_code = 500
+        else:
+            status_code = 400
 
     # Create HTTP response
     response = jsonify(data)

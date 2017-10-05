@@ -19,7 +19,6 @@ $(function(){
             brake: brake
         }).done(function(data){
             $('#cmd').html(data.cmd);
-            console.log(data.cmd);
         });
     }
     {% for channel in channels %}{% for output in outputs %}
