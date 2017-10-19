@@ -1,11 +1,11 @@
 * {
-    font-family: Verdana;
+    font-family: Arial;
     font-size: 1em;
     color: #454545;
 }
 #page {
     margin: 0 auto 0 auto;
-    max-width: 1000px;
+    max-width: 800px;
 }
 .channel {
     width: 15%;
@@ -24,11 +24,11 @@ table {
 }
 table, th, td {
     border-collapse: collapse;
-    border: 1px solid #c5c5c5;
+    border: 1px solid #454545;
     cursor: default;
 }
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 td.r {
@@ -36,4 +36,10 @@ td.r {
 }
 td.b {
     background-color: #0D69AB;
+}
+#cmd {
+    color: #0f0;
+}
+#error {
+    color: #f00;
 }

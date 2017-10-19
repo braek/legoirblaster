@@ -19,6 +19,9 @@ $(function(){
             brake: brake
         }).done(function(data){
             $('#cmd').html(data.cmd);
+            $('#error').html('&nbsp;');
+        }).fail(function(xhr, status, error){
+            $('#error').html(xhr.responseJSON.error);
         });
     }
     {% for channel in channels %}{% for output in outputs %}
@@ -51,6 +54,9 @@ $(function(){
     <form action="/" method="get" onsubmit="return false">
         <table>
             <tr>
+                <td colspan="4"><strong id="cmd">&nbsp;</strong><strong id="error">&nbsp;</strong></td>
+            </tr>
+            <tr>
                 <th scope="col" class="channel">Channel</th>
                 <th scope="col" class="output">Output</th>
                 <th scope="col" class="speed">Speed</th>
@@ -67,10 +73,7 @@ $(function(){
             </tr>
             {% endfor %}{% endfor %}
             <tr>
-                <td colspan="5"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
-            </tr>
-            <tr>
-                <td colspan="5"><strong id="cmd">&nbsp;</strong></td>
+                <td colspan="4"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
             </tr>
         </table>
     </form>
