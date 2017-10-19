@@ -16,7 +16,7 @@ def index():
 
 
 @app.route('/send-command', methods=['POST'])
-def cmd():
+def send_command():
     try:
         # Parse input
         channel = int(request.form.get('channel', 0))
