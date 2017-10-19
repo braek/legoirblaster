@@ -23,7 +23,7 @@ table {
     width: 100%;
     margin: 0 auto 0 auto;
     max-width: 800px;
-    background-color: #f6f6f6;
+    background-color: #F6F6F6;
 }
 table, th, td {
     border-collapse: collapse;
@@ -41,10 +41,10 @@ td.b {
     background-color: #0D69AB;
 }
 #cmd {
-    color: #0f0;
+    color: #287F46;
 }
 #error {
-    color: #f00;
+    color: #C4281B;
 }
 #cmd, #error {
     display: none;
