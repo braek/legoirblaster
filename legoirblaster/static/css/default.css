@@ -4,6 +4,9 @@
     font-size: 1em;
     color: #454545;
 }
+#header {
+    font-size: 1.5em;
+}
 .channel {
     width: 15%;
 }
