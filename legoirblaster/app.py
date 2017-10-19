@@ -54,4 +54,5 @@ def send_command():
     # Create HTTP response
     response = jsonify(data)
     response.status_code = status_code
+    response.content_type = constants.JSON_CONTENT_TYPE
     return response
