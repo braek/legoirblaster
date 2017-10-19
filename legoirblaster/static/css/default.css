@@ -46,3 +46,6 @@ td.b {
 #error {
     color: #f00;
 }
+#cmd, #error {
+    display: none;
+}
