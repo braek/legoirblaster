@@ -1,5 +1,5 @@
 import unittest
-from legoirblaster import core, exceptions
+from .. import core, exceptions
 
 
 class CoreTestCase(unittest.TestCase):
