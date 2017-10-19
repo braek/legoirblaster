@@ -32,7 +32,6 @@ $(function(){
     function showError(error) {
         $('#error').html(error).show();
         $('#cmd').hide();
-
     }
 
     {% for channel in channels %}{% for output in outputs %}
@@ -61,33 +60,29 @@ $(function(){
 </script>
 </head>
 <body>
-<div id="page">
-    <form action="/" method="get" onsubmit="return false">
-        <table>
-            <tr>
-                <td colspan="4"><strong id="cmd">&nbsp;</strong><strong id="error">&nbsp;</strong></td>
-            </tr>
-            <tr>
-                <th scope="col" class="channel">Channel</th>
-                <th scope="col" class="output">Output</th>
-                <th scope="col" class="speed">Speed</th>
-                <th scope="col" class="brake">Brake</th>
-            </tr>
-            {% for channel in channels %}{% for output in outputs %}
-            <tr>
-                {% if loop.index == 1 %}
-                <td rowspan="{{ outputs|length }}">{{ channel }}</td>
-                {% endif %}
-                <td class="{{ output|lower }}">{{ output }}</td>
-                <td><div id="speed{{ channel * outputs|length - outputs|length + loop.index}}"></div></td>
-                <td><button class="ui-button ui-widget ui-corner-all" type="button" id="brake{{ channel * outputs|length - outputs|length + loop.index}}">&times;</button></td>
-            </tr>
-            {% endfor %}{% endfor %}
-            <tr>
-                <td colspan="4"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+<table>
+    <tr>
+        <td colspan="4"><strong id="cmd">&nbsp;</strong><strong id="error">&nbsp;</strong></td>
+    </tr>
+    <tr>
+        <th scope="col" class="channel">Channel</th>
+        <th scope="col" class="output">Output</th>
+        <th scope="col" class="speed">Speed</th>
+        <th scope="col" class="brake">Brake</th>
+    </tr>
+    {% for channel in channels %}{% for output in outputs %}
+    <tr>
+        {% if loop.index == 1 %}
+        <td rowspan="{{ outputs|length }}">{{ channel }}</td>
+        {% endif %}
+        <td class="{{ output|lower }}">{{ output }}</td>
+        <td><div id="speed{{ channel * outputs|length - outputs|length + loop.index}}"></div></td>
+        <td><button class="ui-button ui-widget ui-corner-all" type="button" id="brake{{ channel * outputs|length - outputs|length + loop.index}}">&times;</button></td>
+    </tr>
+    {% endfor %}{% endfor %}
+    <tr>
+        <td colspan="4"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
+    </tr>
+</table>
 </body>
 </html>

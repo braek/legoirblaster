@@ -1,11 +1,8 @@
 * {
     font-family: Arial;
+    line-height: normal;
     font-size: 1em;
     color: #454545;
-}
-#page {
-    margin: 0 auto 0 auto;
-    max-width: 800px;
 }
 .channel {
     width: 15%;
@@ -21,6 +18,8 @@
 }
 table {
     width: 100%;
+    margin: 0 auto 0 auto;
+    max-width: 800px;
 }
 table, th, td {
     border-collapse: collapse;
