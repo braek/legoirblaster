@@ -17,27 +17,39 @@ def index():
 
 @app.route('/cmd', methods=['POST'])
 def cmd():
-    channel = int(request.form.get('channel', 0))
-    output = request.form.get('output', 'R').upper()
-    speed = int(request.form.get('speed', -8))
-    brake = bool(int(request.form.get('brake', 0)))
     try:
+        # Parse input
+        channel = int(request.form.get('channel', 0))
+        output = request.form.get('output', 'R').upper()
+        speed = int(request.form.get('speed', -8))
+        brake = bool(int(request.form.get('brake', 0)))
+
+        # Create command
         cmd = core.create_command(channel, output, speed, brake)
+
+        # Execute command
         core.send_command(cmd)
+
+        # Success response
         data = {
             'cmd': cmd
         }
         status_code = 200
+    except ValueError as e:
+        data = {
+            'error': str(e)
+        }
+        status_code = 400
+    except exceptions.CommandError as e:
+        data = {
+            'error': str(e)
+        }
+        status_code = 405
     except exceptions.LircError as e:
         data = {
             'error': str(e)
         }
         status_code = 500
-    except exceptions.CommandError as e:
-        data = {
-            'error': str(e)
-        }
-        status_code = 400
 
     # Create HTTP response
     response = jsonify(data)
