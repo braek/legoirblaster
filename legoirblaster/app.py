@@ -25,7 +25,7 @@ def send_command():
         brake = bool(int(request.form.get('brake', 0)))
 
         # Create command
-        cmd = core.create_command(channel, output, speed, brake)
+        cmd = core.create_command(channel=channel, output=output, speed=speed, brake=brake)
 
         # Execute command
         core.send_command(cmd)

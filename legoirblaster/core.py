@@ -17,7 +17,7 @@ def send_command(cmd):
         raise exceptions.LircError
 
 
-def create_command(channel, output, speed, brake):
+def create_command(channel=1, output='R', speed=0, brake=False):
     """
     This function generates an IR command based upon user input.
     When no IR command can be generated based upon the user input, an exception is raised.
