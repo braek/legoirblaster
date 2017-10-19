@@ -19,11 +19,11 @@ class AppTests(unittest.TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_get_cmd_not_allowed(self):
-        response = self.app.get('/cmd')
+        response = self.app.get('/send-command')
         self.assertEqual(405, response.status_code)
 
     def test_post_cmd_not_allowed_with_invalid_speed(self):
-        response = self.app.post('/cmd', data={
+        response = self.app.post('/send-command', data={
             'speed': 8,
             'channel': 1,
             'output': 'R'
@@ -31,7 +31,7 @@ class AppTests(unittest.TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_post_cmd_not_allowed_with_invalid_channel(self):
-        response = self.app.post('/cmd', data={
+        response = self.app.post('/send-command', data={
             'speed': 7,
             'channel': 5,
             'output': 'R'
@@ -39,7 +39,7 @@ class AppTests(unittest.TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_post_cmd_not_allowed_with_invalid_output(self):
-        response = self.app.post('/cmd', data={
+        response = self.app.post('/send-command', data={
             'speed': 7,
             'channel': 4,
             'output': 'G'
@@ -47,7 +47,7 @@ class AppTests(unittest.TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_post_cmd_bad_request_with_invalid_brake_value(self):
-        response = self.app.post('/cmd', data={
+        response = self.app.post('/send-command', data={
             'brake': 'abc',
             'speed': 1,
             'channel': 123,
@@ -56,7 +56,7 @@ class AppTests(unittest.TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_post_cmd_bad_request_with_invalid_speed_value(self):
-        response = self.app.post('/cmd', data={
+        response = self.app.post('/send-command', data={
             'brake': 1,
             'speed': 'abc',
             'channel': 1,
@@ -65,7 +65,7 @@ class AppTests(unittest.TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_post_cmd_bad_request_with_invalid_channel_value(self):
-        response = self.app.post('/cmd', data={
+        response = self.app.post('/send-command', data={
             'brake': 1,
             'speed': 1,
             'channel': 'abc',

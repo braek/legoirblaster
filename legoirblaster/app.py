@@ -15,7 +15,7 @@ def index():
     )
 
 
-@app.route('/cmd', methods=['POST'])
+@app.route('/send-command', methods=['POST'])
 def cmd():
     try:
         # Parse input
