@@ -24,6 +24,9 @@ class CoreTestCase(unittest.TestCase):
         subprocess.call = MagicMock(side_effect=FileNotFoundError)
         self.assertRaises(exceptions.LircError, core.send_command, 'RANDOM_COMMAND')
 
+    def test_create_command_should_raise_command_error_with_invalid_data(self):
+        self.assertRaises(exceptions.CommandError, core.create_command, channel=5, output='G', speed=8)
+
     def test_create_command_1r_m7(self):
         cmd = core.create_command(channel=1, output='R', speed=-7, brake=False)
         self.assertEqual(cmd, '1R_M7')
