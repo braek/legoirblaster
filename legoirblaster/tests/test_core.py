@@ -12,7 +12,3 @@ class CoreTestCase(unittest.TestCase):
 
     def test_command_creation_with_channel_1_output_r_brake_false_speed_1_returns_1r_1(self):
         self.assertEqual(core.create_command(1, 'R', 1, False), '1R_1')
-
-
-if __name__ == '__main__':
-    unittest.main()

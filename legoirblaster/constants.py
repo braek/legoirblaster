@@ -9,3 +9,7 @@ RC_MODE = 'LEGO_Single_Output'
 
 # Positive integer, representing the maximum speed of single output
 MAX_SPEED = 7
+
+# Response constants
+CHARSET = 'UTF-8'
+HTML_CONTENT_TYPE = 'text/html; charset={}'.format(CHARSET)

@@ -9,9 +9,10 @@ app = Flask(__name__)
 def index():
     channels = list(range(1, constants.CHANNELS + 1))
     devices = list(range(1, constants.CHANNELS * len(constants.OUTPUTS) + 1))
-    response = Response(render_template('index.html', channels=channels, outputs=constants.OUTPUTS, devices=devices))
-    response.headers['Content-Type'] = 'text/html; charset=UTF-8'
-    return response
+    return Response(
+        render_template('index.html', channels=channels, outputs=constants.OUTPUTS, devices=devices),
+        content_type=constants.HTML_CONTENT_TYPE
+    )
 
 
 @app.route('/cmd', methods=['POST'])
