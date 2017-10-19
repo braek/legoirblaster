@@ -28,14 +28,16 @@ def cmd():
             'cmd': cmd
         }
         status_code = 200
-    except exceptions.LegoIRBlasterException as e:
+    except exceptions.LircError as e:
         data = {
             'error': str(e)
         }
-        if isinstance(e, exceptions.LircError):
-            status_code = 500
-        else:
-            status_code = 400
+        status_code = 500
+    except exceptions.CommandError as e:
+        data = {
+            'error': str(e)
+        }
+        status_code = 400
 
     # Create HTTP response
     response = jsonify(data)
