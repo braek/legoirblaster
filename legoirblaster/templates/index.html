@@ -18,12 +18,23 @@ $(function(){
             output: output,
             brake: brake
         }).done(function(data){
-            $('#cmd').html(data.cmd);
-            $('#error').html('&nbsp;');
-        }).fail(function(xhr, status, error){
-            $('#error').html(xhr.responseJSON.error);
+            showCommand(data.cmd);
+        }).fail(function(xhr){
+            showError(xhr.responseJSON.error);
         });
     }
+
+    function showCommand(cmd) {
+        $('#cmd').html(cmd).show();
+        $('#error').hide();
+    }
+
+    function showError(error) {
+        $('#error').html(error).show();
+        $('#cmd').hide();
+
+    }
+
     {% for channel in channels %}{% for output in outputs %}
     $('#speed{{ channel * outputs|length - outputs|length + loop.index}}').slider({
         value: 0,
