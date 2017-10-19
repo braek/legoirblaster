@@ -9,11 +9,9 @@ class CoreTestCase(unittest.TestCase):
     Unit tests for the core of the Lego IR Blaster
     """
     def setUp(self):
-        # Make backup of method that we are going to mock
         CoreTestCase.call_method_backup = subprocess.call
 
     def tearDown(self):
-        # Put backup version of mocked method back
         subprocess.call = CoreTestCase.call_method_backup
 
     def test_send_command_should_not_raise_file_not_found_error(self):

@@ -11,6 +11,10 @@ class AppTests(unittest.TestCase):
     """
     def setUp(self):
         self.app = app.test_client()
+        AppTests.call_method_backup = subprocess.call
+
+    def tearDown(self):
+        subprocess.call = AppTests.call_method_backup
 
     def test_get_index_http_ok(self):
         response = self.app.get('/')
@@ -88,23 +92,19 @@ class AppTests(unittest.TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_post_send_command_http_ok_with_valid_command(self):
-        call = subprocess.call
         subprocess.call = MagicMock()
         response = self.app.post('/send-command', data={
             'speed': 1,
             'channel': 1,
             'output': 'R'
         })
-        subprocess.call = call
         self.assertEqual(200, response.status_code)
 
     def test_post_send_command_http_internal_server_error_with_invalid_lirc_installation(self):
-        call = subprocess.call
         subprocess.call = MagicMock(side_effect=FileNotFoundError)
         response = self.app.post('/send-command', data={
             'speed': 1,
             'channel': 1,
             'output': 'R'
         })
-        subprocess.call = call
         self.assertEqual(500, response.status_code)
