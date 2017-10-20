@@ -25,13 +25,11 @@ $(function(){
     }
 
     function showCommand(cmd) {
-        $('#cmd').html(cmd).show();
-        $('#error').hide();
+        $('#status').html(cmd).addClass('command').removeClass('error');
     }
 
     function showError(error) {
-        $('#error').html(error).show();
-        $('#cmd').hide();
+        $('#status').html(error).addClass('error').removeClass('command');
     }
 
     {% for channel in channels %}{% for output in outputs %}
@@ -60,35 +58,33 @@ $(function(){
 </script>
 </head>
 <body>
-<table>
-    <tr>
-        <th scope="col" colspan="4" id="header">{{ application_name }}</th>
-    </tr>
-    <tr>
-        <td colspan="4"><strong><span id="cmd"></span><span id="error"></span></strong></td>
-    </tr>
-    <tr>
-        <th scope="col" class="channel">Channel</th>
-        <th scope="col" class="output">Output</th>
-        <th scope="col" class="speed">Speed</th>
-        <th scope="col" class="brake">Brake</th>
-    </tr>
-    {% for channel in channels %}{% for output in outputs %}
-    <tr>
-        {% if loop.index == 1 %}
-        <td rowspan="{{ outputs|length }}">{{ channel }}</td>
-        {% endif %}
-        <td class="{{ output|lower }}">{{ output }}</td>
-        <td><div id="speed{{ channel * outputs|length - outputs|length + loop.index}}"></div></td>
-        <td><button class="ui-button ui-widget ui-corner-all" type="button" id="brake{{ channel * outputs|length - outputs|length + loop.index}}">&times;</button></td>
-    </tr>
-    {% endfor %}{% endfor %}
-    <tr>
-        <td colspan="4"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
-    </tr>
-    <tr>
-        <td colspan="4"><em id="disclaimer">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site</em></td>
-    </tr>
-</table>
+<div id="page">
+    <h1>{{ application_name }}</h1>
+    <table>
+        <tr>
+            <th colspan="4"><span id="status"></span></th>
+        </tr>
+        <tr>
+            <th scope="col" class="channel">Channel</th>
+            <th scope="col" class="output">Output</th>
+            <th scope="col" class="speed">Speed</th>
+            <th scope="col" class="brake">Brake</th>
+        </tr>
+        {% for channel in channels %}{% for output in outputs %}
+        <tr>
+            {% if loop.index == 1 %}
+            <td rowspan="{{ outputs|length }}">{{ channel }}</td>
+            {% endif %}
+            <td class="{{ output|lower }}">{{ output }}</td>
+            <td><div id="speed{{ channel * outputs|length - outputs|length + loop.index}}"></div></td>
+            <td><button class="ui-button ui-widget ui-corner-all" type="button" id="brake{{ channel * outputs|length - outputs|length + loop.index}}">&times;</button></td>
+        </tr>
+        {% endfor %}{% endfor %}
+        <tr>
+            <td colspan="4"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
+        </tr>
+    </table>
+    <p><em>LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site</em></p>
+</div>
 </body>
 </html>

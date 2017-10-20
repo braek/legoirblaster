@@ -1,11 +1,21 @@
 * {
-    font-family: Arial;
     line-height: normal;
     font-size: 1em;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+}
+a, button {
+    cursor: pointer !important;
+}
+body {
+    font-family: Arial;
     color: #454545;
 }
-#header {
-    font-size: 1.5em;
+h1 {
+    font-size: 2em;
+    text-align: center;
+    padding: 0.5em;
 }
 .channel {
     width: 15%;
@@ -20,15 +30,12 @@
     width: 15%;
 }
 table {
-    width: 100%;
-    margin: 0 auto 0 auto;
-    max-width: 800px;
     background-color: #F6F6F6;
+    width: 100%;
 }
 table, th, td {
     border-collapse: collapse;
     border: 1px solid #454545;
-    cursor: default;
 }
 th, td {
     padding: 10px;
@@ -40,15 +47,18 @@ td.r {
 td.b {
     background-color: #0D69AB;
 }
-#cmd {
+.cmd {
     color: #287F46;
 }
-#error {
+.error {
     color: #C4281B;
 }
-#cmd, #error {
-    display: none;
-}
-#disclaimer {
+p {
     font-size: 0.75em;
+    text-align: center;
+    padding: 0.5em;
+}
+#page {
+    max-width: 750px;
+    margin: 0 auto 0 auto;
 }
