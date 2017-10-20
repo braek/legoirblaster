@@ -26,6 +26,8 @@ https://www.youtube.com/watch?v=HI0b8D8LjN8
 
 Enable the virtual environment and move to the project directory.
 
+To execute the unit tests, type:
+
 ```
 python -m unittest
 ```
@@ -34,6 +36,14 @@ python -m unittest
 
 Enable the virtual environment and move to the project directory.
 
+To execute the coverage, type:
+
 ```
 coverage run --source=legoirblaster -m unittest
+```
+
+To show the coverage report, type:
+
+```
+coverage report -m
 ```
