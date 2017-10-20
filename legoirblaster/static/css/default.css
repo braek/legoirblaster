@@ -6,7 +6,7 @@
     padding: 0;
 }
 a, button {
-    cursor: pointer !important;
+    cursor: pointer;
 }
 body {
     font-family: Arial;
