@@ -38,7 +38,7 @@ Enable the virtual environment and move to the project directory.
 To execute the coverage, type:
 
 ```
-coverage run --source=legoirblaster -m unittest
+coverage run --source=. -m unittest
 ```
 
 To show the coverage report, type:
