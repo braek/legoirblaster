@@ -49,3 +49,6 @@ td.b {
 #cmd, #error {
     display: none;
 }
+#disclaimer {
+    font-size: 0.5em;
+}

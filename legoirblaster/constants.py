@@ -14,3 +14,6 @@ MAX_SPEED = 7
 CHARSET = 'UTF-8'
 HTML_CONTENT_TYPE = 'text/html; charset={}'.format(CHARSET)
 JSON_CONTENT_TYPE = 'application/json; charset={}'.format(CHARSET)
+
+# Application
+APPLICATION_NAME = 'LEGO® IR Blaster'

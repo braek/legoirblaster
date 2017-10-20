@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lego IR Blaster</title>
+<title>{{ application_name }}</title>
 <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" rel="stylesheet">
 <link href="/static/css/default.css" type="text/css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
@@ -62,7 +62,7 @@ $(function(){
 <body>
 <table>
     <tr>
-        <th scope="col" colspan="4" id="header">Lego IR Blaster</th>
+        <th scope="col" colspan="4" id="header">{{ application_name }}</th>
     </tr>
     <tr>
         <td colspan="4"><strong><span id="cmd"></span><span id="error"></span></strong></td>
@@ -85,6 +85,9 @@ $(function(){
     {% endfor %}{% endfor %}
     <tr>
         <td colspan="4"><button class="ui-button ui-widget ui-corner-all" type="button" id="reset">Reset</button></td>
+    </tr>
+    <tr>
+        <td colspan="4"><em id="disclaimer">LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site</em></td>
     </tr>
 </table>
 </body>

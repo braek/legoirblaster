@@ -1,4 +1,4 @@
-# Lego IR Blaster
+# LEGO® IR Blaster
 
 ## Description
 

@@ -10,8 +10,8 @@ def index():
     channels = list(range(1, constants.CHANNELS + 1))
     devices = list(range(1, constants.CHANNELS * len(constants.OUTPUTS) + 1))
     return Response(
-        render_template('index.html', channels=channels, outputs=constants.OUTPUTS, devices=devices),
-        content_type=constants.HTML_CONTENT_TYPE
+        render_template('index.html', channels=channels, outputs=constants.OUTPUTS, devices=devices,
+                        application_name=constants.APPLICATION_NAME), content_type=constants.HTML_CONTENT_TYPE
     )
 
 
