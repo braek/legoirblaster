@@ -3,7 +3,7 @@ from . import constants
 from . import exceptions
 
 
-def send_command(cmd):
+def send_command(command):
     """
     Function to send the IR command through LIRC. Make sure that LIRC is properly configured or this could raise
     exceptions.
@@ -12,7 +12,7 @@ def send_command(cmd):
     :return: nothing, but sends and IR command through LIRC
     """
     try:
-        subprocess.call(['irsend', 'SEND_ONCE', constants.RC_MODE, cmd])
+        subprocess.call(['irsend', 'SEND_ONCE', constants.RC_MODE, command])
     except FileNotFoundError:
         raise exceptions.LircError
 
@@ -29,13 +29,13 @@ def create_command(channel=1, output='R', speed=0, brake=False):
     :return: string representing the raw IR command
     """
     if channel in range(1, constants.CHANNELS + 1) and output in constants.OUTPUTS:
-        cmd = None
+        command = None
         if brake:
-            cmd = 'BRAKE'
+            command = 'BRAKE'
         elif speed in range(0, constants.MAX_SPEED + 1):
-            cmd = '{}'.format(speed)
+            command = '{}'.format(speed)
         elif speed in range(-constants.MAX_SPEED, 0):
-            cmd = 'M{}'.format(abs(speed))
-        if cmd:
-            return '{}{}_{}'.format(channel, output, cmd)
+            command = 'M{}'.format(abs(speed))
+        if command:
+            return '{}{}_{}'.format(channel, output, command)
     raise exceptions.CommandError
