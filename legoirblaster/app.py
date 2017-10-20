@@ -25,14 +25,14 @@ def send_command():
         brake = bool(int(request.form.get('brake', 0)))
 
         # Create command
-        cmd = core.create_command(channel=channel, output=output, speed=speed, brake=brake)
+        command = core.create_command(channel=channel, output=output, speed=speed, brake=brake)
 
         # Execute command
-        core.send_command(cmd)
+        core.send_command(command)
 
         # Success response
         data = {
-            'cmd': cmd
+            'command': command
         }
         status_code = 200
     except ValueError as e:

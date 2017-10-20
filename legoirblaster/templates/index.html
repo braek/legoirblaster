@@ -18,14 +18,14 @@ $(function(){
             output: output,
             brake: brake
         }).done(function(data){
-            showCommand(data.cmd);
+            showCommand(data.command);
         }).fail(function(xhr){
             showError(xhr.responseJSON.error);
         });
     }
 
-    function showCommand(cmd) {
-        $('#status').html(cmd).addClass('command').removeClass('error');
+    function showCommand(command) {
+        $('#status').html(command).addClass('command').removeClass('error');
     }
 
     function showError(error) {

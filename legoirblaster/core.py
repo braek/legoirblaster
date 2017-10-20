@@ -8,7 +8,7 @@ def send_command(command):
     Function to send the IR command through LIRC. Make sure that LIRC is properly configured or this could raise
     exceptions.
 
-    :param cmd: string representing the raw IR command to send
+    :param command: string representing the raw IR command to send
     :return: nothing, but sends and IR command through LIRC
     """
     try:
