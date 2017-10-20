@@ -21,3 +21,19 @@ https://www.youtube.com/watch?v=HI0b8D8LjN8
 
 * http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/
 * https://github.com/iConor/lego-lirc
+
+## Unit tests
+
+Enable the virtual environment and move to the project directory.
+
+```
+python -m unittest
+```
+
+## Coverage
+
+Enable the virtual environment and move to the project directory.
+
+```
+coverage run --source=legoirblaster -m unittest
+```
