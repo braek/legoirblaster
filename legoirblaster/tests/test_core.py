@@ -1,10 +1,10 @@
-import unittest
+from unittest import TestCase
 from unittest.mock import MagicMock
 import subprocess
 from .. import core, exceptions
 
 
-class CoreTestCase(unittest.TestCase):
+class CoreTestCase(TestCase):
     """
     Unit tests for the core of the Lego IR Blaster
     """

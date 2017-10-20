@@ -1,11 +1,11 @@
-import unittest
+from unittest import TestCase
 from unittest.mock import MagicMock
+import subprocess
 from .. import constants
 from ..app import app
-import subprocess
 
 
-class AppTests(unittest.TestCase):
+class AppTests(TestCase):
     """
     Unit tests for the Flask application itself
     """
