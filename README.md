@@ -21,6 +21,26 @@ https://www.youtube.com/watch?v=HI0b8D8LjN8
 * http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/
 * https://github.com/iConor/lego-lirc
 
+## Virtual environment
+
+Move to the project directory and type:
+
+```
+virtualenv -p python3 --no-site-packages venv
+```
+
+Activate the virtual environment like this:
+
+```
+source venv/bin/activate
+```
+
+Install the dependencies through PIP:
+
+```
+pip install -r requirements.txt
+```
+
 ## Unit tests
 
 Enable the virtual environment and move to the project directory.
