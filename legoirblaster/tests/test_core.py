@@ -25,6 +25,9 @@ class CoreTestCase(TestCase):
     def test_create_command_should_raise_command_error_with_invalid_data(self):
         self.assertRaises(exceptions.CommandError, core.create_command, channel=5, output='G', speed=8)
 
+    def test_create_command_should_raise_lego_ir_blaster_exception_with_invalid_data(self):
+        self.assertRaises(exceptions.LegoIRBlasterException, core.create_command, channel=5, output='G', speed=8)
+
     def test_create_command_1r_m7(self):
         command = core.create_command(channel=1, output='R', speed=-7, brake=False)
         self.assertEqual(command, '1R_M7')
