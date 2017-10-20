@@ -12,8 +12,7 @@ https://www.youtube.com/watch?v=HI0b8D8LjN8
 
 ## To-do list
 
-* Clean and refactor current codebase
-* Write unit tests
+* Unit tests for jQuery
 * Write documentation on how to get this running on Raspberry Pi
 * Write documentation on the used hardware (IR led, transistor, etc.)
 
