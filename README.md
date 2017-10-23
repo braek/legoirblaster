@@ -101,3 +101,15 @@ Modify the **/boot/config.txt** file and add:
 ```
 dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22
 ```
+
+Include the Lego IR signals in the LIRC config in the **/etc/lirc/lircd.conf** file:
+
+```
+include "/var/www/html/legoirblaster/lirc/LEGO_Single_Output"
+```
+
+Start the LIRC device with this command:
+
+```
+sudo lircd -d /dev/lirc0
+```
