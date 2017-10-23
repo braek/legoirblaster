@@ -114,15 +114,13 @@ Start the LIRC device with this command:
 sudo lircd -d /dev/lirc0
 ```
 
-## Check Raspbian version
+## Install Apache on Raspbian
 
 You can check the Raspbian version with the following command:
 
 ```
 cat /etc/os-release
 ```
-
-## Install Apache on Raspbian
 
 Check the Python 3 version with the following command:
 
