@@ -114,77 +114,99 @@ Start the LIRC device with this command:
 sudo lircd -d /dev/lirc0
 ```
 
-# Apache on Raspbian
+## Check Raspbian version
 
-TL;DR
+You can check the Raspbian version with this command:
 
-
-
-sudo apt-get update
-
-
-
+```
 cat /etc/os-release
-PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
-NAME="Raspbian GNU/Linux"
-VERSION_ID="9"
-VERSION="9 (stretch)"
-ID=raspbian
-ID_LIKE=debian
-HOME_URL="http://www.raspbian.org/"
-SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
-BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+```
 
+## Install Apache on Raspbian
 
+You can check the Raspbian version with the following command:
 
+Check the Python 3 version with the following command:
+
+```
 python3 --version
-Python 3.5.3
+```
 
+Install Apache with the following command:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 sudo apt-get install apache2 libapache2-mod-wsgi-py3
+```
+
+Check the Apache version with the following command:
+
+```
 apache2 -v
+```
 
+Install **virtualenv** with the following command:
 
-
-
-
-
-
-
-
-
-
-
-
+```
 sudo apt-get install virtualenv
+```
+
+Move to the Apache web directory:
+
+```
 cd /var/www/html
+```
+
+Clone the project from GitHub in this directory:
+
+```
 sudo git clone https://github.com/braek/legoirblaster.git
+```
+
+Change the owner of the project directory to user **pi** and group **pi** with the following command:
+
+```
 chown pi:pi legoirblaster
+```
+
+Move to the project directory:
+
+```
 cd legoirblaster
+```
+
+Create a virtualen environment **venv** inside the project directory:
+
+```
 virtualenv -p python3 --no-site-packages venv
+```
+
+Activate the virtual environment:
+
+```
 source venv/bin/activate
+```
+
+Install the dependencies through PIP:
+
+```
 pip install -r requirements.txt
+```
+
+Deactivate the virtual environment:
+
+```
 deactivate
+```
 
+Add a new site in Apache 2:
 
-
-
-
+```
 sudo vim /etc/apache2/sites-available/legoirblaster.conf
+```
 
+And paste the following content in that file:
+
+```
 <VirtualHost *:80>
     WSGIDaemonProcess legoirblaster python-home=/var/www/html/legoirblaster/venv user=pi group=pi threads=5
     WSGIScriptAlias / /var/www/html/legoirblaster/wsgi.py
@@ -195,13 +217,22 @@ sudo vim /etc/apache2/sites-available/legoirblaster.conf
         Require all granted
     </Directory>
 </VirtualHost>
+```
 
+Disable the default site:
 
-
-
-
-
-
+```
 sudo a2dissite 000-default
+```
+
+Enable the project site:
+
+```
 sudo a2ensite legoirblaster
+```
+
+Restart Apache:
+
+```
 sudo service apache2 restart
+```
