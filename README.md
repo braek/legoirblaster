@@ -66,3 +66,38 @@ To show the coverage report, type:
 ```
 coverage report -m
 ```
+
+## LIRC
+
+To install LIRC on the Raspberry Pi, type:
+
+```
+sudo apt-get install lirc
+```
+
+Add the following lines to the **/etc/modules** file:
+
+```
+lirc_dev
+lirc_rpi gpio_in_pin=23 gpio_out_pin=22
+```
+
+Change the **/etc/lirc/hardware.conf** file to:
+
+```
+DEVICE="/dev/lirc0"
+MODULES="lirc_rpi"
+```
+
+Restart **lircd** so that it picks up the changes.
+
+```
+sudo /etc/init.d/lirc stop
+sudo /etc/init.d/lirc start
+```
+
+Modify the **/boot/config.txt** file and add:
+
+```
+dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22
+```
