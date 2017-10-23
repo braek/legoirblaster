@@ -11,8 +11,8 @@
 <script type="text/javascript">//<![CDATA[
 $(function(){
 
-    function sendCommand(channel, output, speed, brake) {
-        $.post('/send-command', {
+    function createSignal(channel, output, speed, brake) {
+        $.post('/signals', {
             speed: speed,
             channel: channel,
             output: output,
@@ -39,12 +39,12 @@ $(function(){
         max: 7,
         step: 1,
         slide: function(event, ui){
-            sendCommand({{ channel }}, '{{ output }}', ui.value, 0);
+            createSignal({{ channel }}, '{{ output }}', ui.value, 0);
         }
     });
 
     $('#brake{{ channel * outputs|length - outputs|length + loop.index}}').click(function(){
-        sendCommand({{channel}}, '{{ output }}', 0, 1);
+        createSignal({{channel}}, '{{ output }}', 0, 1);
         $('#speed{{ channel * outputs|length - outputs|length + loop.index}}').slider('value', 0);
     });
     {% endfor %}{% endfor %}

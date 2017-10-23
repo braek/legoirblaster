@@ -29,11 +29,11 @@ class AppTests(TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_get_send_command_http_not_allowed(self):
-        response = self.app.get('/send-command')
+        response = self.app.get('/signals')
         self.assertEqual(405, response.status_code)
 
     def test_post_send_command_http_not_allowed_with_invalid_speed_content_type(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'speed': 8,
             'channel': 1,
             'output': 'R'
@@ -41,7 +41,7 @@ class AppTests(TestCase):
         self.assertEqual(constants.JSON_CONTENT_TYPE, response.content_type)
 
     def test_post_send_command_http_not_allowed_with_invalid_speed(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'speed': 8,
             'channel': 1,
             'output': 'R'
@@ -49,7 +49,7 @@ class AppTests(TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_post_send_command_http_not_allowed_with_invalid_channel(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'speed': 7,
             'channel': 5,
             'output': 'R'
@@ -57,7 +57,7 @@ class AppTests(TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_post_send_command_http_not_allowed_with_invalid_output(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'speed': 7,
             'channel': 4,
             'output': 'G'
@@ -65,7 +65,7 @@ class AppTests(TestCase):
         self.assertEqual(405, response.status_code)
 
     def test_post_send_command_http_bad_request_with_invalid_brake_value(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'brake': 'abc',
             'speed': 1,
             'channel': 123,
@@ -74,7 +74,7 @@ class AppTests(TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_post_send_command_http_bad_request_with_invalid_speed_value(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'brake': 0,
             'speed': 'abc',
             'channel': 1,
@@ -83,7 +83,7 @@ class AppTests(TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_post_send_command_http_bad_request_with_invalid_channel_value(self):
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'brake': 0,
             'speed': 1,
             'channel': 'abc',
@@ -93,16 +93,16 @@ class AppTests(TestCase):
 
     def test_post_send_command_http_ok_with_valid_command(self):
         subprocess.call = MagicMock()
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'speed': 1,
             'channel': 1,
             'output': 'R'
         })
-        self.assertEqual(200, response.status_code)
+        self.assertEqual(201, response.status_code)
 
     def test_post_send_command_http_internal_server_error_with_invalid_lirc_installation(self):
         subprocess.call = MagicMock(side_effect=FileNotFoundError)
-        response = self.app.post('/send-command', data={
+        response = self.app.post('/signals', data={
             'speed': 1,
             'channel': 1,
             'output': 'R'

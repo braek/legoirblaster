@@ -15,8 +15,8 @@ def index():
     )
 
 
-@app.route('/send-command', methods=['POST'])
-def send_command():
+@app.route('/signals', methods=['POST'])
+def signals():
     try:
         # Parse input
         channel = int(request.form.get('channel', 0))
@@ -34,7 +34,7 @@ def send_command():
         data = {
             'command': command
         }
-        status_code = 200
+        status_code = 201
     except ValueError as e:
         data = {
             'error': str(e)
