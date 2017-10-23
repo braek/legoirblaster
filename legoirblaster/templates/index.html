@@ -8,30 +8,9 @@
 <link href="/static/css/default.css" type="text/css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+<script src="/static/js/functions.js" type="text/javascript"></script>
 <script type="text/javascript">//<![CDATA[
 $(function(){
-
-    function createSignal(channel, output, speed, brake) {
-        $.post('/signals', {
-            speed: speed,
-            channel: channel,
-            output: output,
-            brake: brake
-        }).done(function(data){
-            showCommand(data.command);
-        }).fail(function(xhr){
-            showError(xhr.responseJSON.error);
-        });
-    }
-
-    function showCommand(command) {
-        $('#status').html(command).addClass('command').removeClass('error');
-    }
-
-    function showError(error) {
-        $('#status').html(error).addClass('error').removeClass('command');
-    }
-
     {% for channel in channels %}{% for output in outputs %}
     $('#speed{{ channel * outputs|length - outputs|length + loop.index}}').slider({
         value: 0,
