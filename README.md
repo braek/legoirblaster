@@ -116,15 +116,13 @@ sudo lircd -d /dev/lirc0
 
 ## Check Raspbian version
 
-You can check the Raspbian version with this command:
+You can check the Raspbian version with the following command:
 
 ```
 cat /etc/os-release
 ```
 
 ## Install Apache on Raspbian
-
-You can check the Raspbian version with the following command:
 
 Check the Python 3 version with the following command:
 
