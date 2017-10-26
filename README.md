@@ -67,53 +67,6 @@ To show the coverage report, type:
 coverage report -m
 ```
 
-## LIRC
-
-To install LIRC on the Raspberry Pi, type:
-
-```
-sudo apt-get install lirc
-```
-
-Add the following lines to the **/etc/modules** file:
-
-```
-lirc_dev
-lirc_rpi gpio_in_pin=23 gpio_out_pin=22
-```
-
-Change the **/etc/lirc/hardware.conf** file to:
-
-```
-DEVICE="/dev/lirc0"
-MODULES="lirc_rpi"
-```
-
-Restart **lircd** so that it picks up the changes.
-
-```
-sudo /etc/init.d/lirc stop
-sudo /etc/init.d/lirc start
-```
-
-Modify the **/boot/config.txt** file and add:
-
-```
-dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22
-```
-
-Include the Lego IR signals in the LIRC config in the **/etc/lirc/lircd.conf** file:
-
-```
-include "/var/www/html/legoirblaster/lirc/LEGO_Single_Output"
-```
-
-Start the LIRC device with this command:
-
-```
-sudo lircd -d /dev/lirc0
-```
-
 ## Install Apache on Raspbian
 
 You can check the Raspbian version with the following command:
@@ -231,4 +184,59 @@ Restart Apache:
 
 ```
 sudo service apache2 restart
+```
+
+
+
+
+
+## LIRC configuration
+
+Install LIRC:
+
+```
+sudo apt-get install
+```
+
+Add these lines to **/etc/modules** file:
+
+```
+lirc_dev
+lirc_rpi gpio_out_pin=22
+```
+
+Change the **/etc/lirc/hardware.conf** file to:
+
+```
+LIRCD_ARGS="--uinput"
+LOAD_MODULES=true
+DRIVER="default"
+DEVICE="/dev/lirc0"
+MODULES="lirc_rpi"
+LIRCD_CONF=""
+LIRCMD_CONF=""
+```
+
+Uncomment this line in the **/boot/config.txt** file:
+
+```
+dtoverlay=lirc-rpi
+```
+
+Add this line to the **/etc/lirc/lircd.conf** file:
+
+```
+include "/home/pi/legoirblaster/lirc/LEGO_Single_Output.conf"
+```
+
+Restart the LIRC service:
+
+```
+sudo /etc/init.d/lirc restart
+```
+
+Start the **/dev/lirc0** device:
+
+```
+sudo lircd -d /dev/lirc0
 ```
