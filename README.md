@@ -195,7 +195,7 @@ sudo service apache2 restart
 Install LIRC:
 
 ```
-sudo apt-get install
+sudo apt-get install lirc
 ```
 
 Add these lines to **/etc/modules** file:
