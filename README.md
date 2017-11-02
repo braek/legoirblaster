@@ -202,7 +202,7 @@ Add these lines to **/etc/modules** file:
 
 ```
 lirc_dev
-lirc_rpi gpio_out_pin=22
+lirc_rpi
 ```
 
 Change the **/etc/lirc/hardware.conf** file to:
