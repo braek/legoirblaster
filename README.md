@@ -114,7 +114,7 @@ sudo git clone https://github.com/braek/legoirblaster.git
 Change the owner of the project directory to user **pi** and group **pi** with the following command:
 
 ```
-chown pi:pi legoirblaster
+sudo chown pi:pi legoirblaster
 ```
 
 Move to the project directory:
