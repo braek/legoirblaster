@@ -108,7 +108,7 @@ class AppTests(TestCase):
             'channel': 1,
             'output': 'R'
         })
-        data = json.loads(response.data)
+        data = json.loads(response.data.decode('utf-8'))
         self.assertTrue('command' in data.keys())
 
     def test_post_signals_http_internal_server_error_with_invalid_lirc_installation(self):
@@ -127,5 +127,5 @@ class AppTests(TestCase):
             'channel': 1,
             'output': 'R'
         })
-        data = json.loads(response.data)
+        data = json.loads(response.data.decode('utf-8'))
         self.assertTrue('error' in data.keys())
