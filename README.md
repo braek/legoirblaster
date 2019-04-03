@@ -4,7 +4,9 @@
 
 You can control LEGO® Power Functions with this Flask application if you install it on a Raspberry Pi.
 
-There's more information about this project in this [blog post](http://www.braek.be/2017/12/06/lego-power-functions-trains-raspberry-pi.html).
+~~There's more information about this project in this [blog post](http://www.braek.be/2017/12/06/lego-power-functions-trains-raspberry-pi.html).~~
+
+There's more information about this project in this [archived blog post](post/2017-12-06-lego-power-functions-trains-raspberry-pi.md).
 
 ## Video
 
