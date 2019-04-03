@@ -16,7 +16,7 @@ In this article I will explain how to build the **IR blaster hardware** and depl
 
 This YouTube video demonstrates the **LEGO® IR Blaster** in action.
 
-https://www.youtube-nocookie.com/embed/MxAEXKPW3xQ
+https://www.youtube.com/watch?v=MxAEXKPW3xQ
 
 ## IR blaster hardware
 
